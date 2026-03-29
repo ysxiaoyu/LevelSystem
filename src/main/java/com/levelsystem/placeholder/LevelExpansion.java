@@ -1,5 +1,6 @@
 package com.levelsystem.placeholder;
 
+
 import com.levelsystem.LevelSystem;
 import com.levelsystem.data.PlayerData;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
@@ -22,7 +23,7 @@ public class LevelExpansion extends PlaceholderExpansion {
 
     @Override
     public @NotNull String getAuthor() {
-        return "GuardTeam-ysxiaoyu";
+        return "GuardTeam";
     }
 
     @Override
@@ -32,7 +33,7 @@ public class LevelExpansion extends PlaceholderExpansion {
 
     @Override
     public boolean persist() {
-        return true; // 持久化，不随重载消失
+        return true;
     }
 
     @Override
@@ -43,10 +44,18 @@ public class LevelExpansion extends PlaceholderExpansion {
     @Override
     public @Nullable String onPlaceholderRequest(Player player, @NotNull String params) {
         if (player == null) {
-            return "";
+            return "0";
         }
 
-        PlayerData data = plugin.getDataManager().getPlayerData(player);
+        // 使用 getPlayerDataRaw 获取原始数据
+        PlayerData data = plugin.getDataManager().getPlayerDataRaw(player.getUniqueId());
+        if (data == null) {
+            // 如果内存中没有，尝试加载
+            data = plugin.getDataManager().getPlayerData(player);
+        }
+
+        // 关键：使用 plugin.getTitleManager() 获取称号
+        String title = plugin.getTitleManager().getTitle(data.getTier(), data.getLevel());
 
         switch (params.toLowerCase()) {
             case "level":
@@ -67,12 +76,30 @@ public class LevelExpansion extends PlaceholderExpansion {
 
             case "percent":
             case "百分比":
-                int percent = (data.getValue() * 100) / plugin.getExpPerLevel();
-                return String.valueOf(percent);
+                int expPerLevel = plugin.getExpPerLevel();
+                if (expPerLevel == 0) return "0";
+                int percent = (data.getValue() * 100) / expPerLevel;
+                return String.valueOf(Math.min(percent, 100));
 
             case "progress":
             case "进度条":
                 return getProgressBar(data.getValue(), plugin.getExpPerLevel());
+
+            case "title":
+            case "称号":
+                return title.replace("&", "").replace("§", "");
+
+            case "titlecolored":
+            case "称号颜色":
+            case "coloredtitle":
+                return title.replace('&', '§');
+
+            case "titleraw":
+                return title;
+
+            case "nexttitle":
+            case "下一称号":
+                return plugin.getTitleManager().getNextTitleInfo(data.getTotalLevel());
 
             default:
                 return null;
@@ -80,15 +107,16 @@ public class LevelExpansion extends PlaceholderExpansion {
     }
 
     private String getProgressBar(int current, int max) {
+        if (max <= 0) return "§7□□□□□□□□□□";
         int totalBars = 10;
-        int filledBars = (current * totalBars) / max;
+        int filledBars = Math.min((current * totalBars) / max, totalBars);
         StringBuilder bar = new StringBuilder();
 
         for (int i = 0; i < totalBars; i++) {
             if (i < filledBars) {
-                bar.append("§a■"); // 绿色填充
+                bar.append("§a■");
             } else {
-                bar.append("§7■"); // 灰色空槽
+                bar.append("§7■");
             }
         }
 

@@ -1,5 +1,6 @@
 package com.levelsystem.data;
 
+
 import com.levelsystem.LevelSystem;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -32,6 +33,11 @@ public class DataManager {
 
     public PlayerData getPlayerData(UUID uuid) {
         return playerDataMap.computeIfAbsent(uuid, this::loadPlayerData);
+    }
+
+    // 关键：这个方法必须存在！
+    public PlayerData getPlayerDataRaw(UUID uuid) {
+        return playerDataMap.get(uuid);
     }
 
     public void setPlayerData(UUID uuid, PlayerData data) {
@@ -78,7 +84,6 @@ public class DataManager {
     }
 
     public void loadAllData() {
-        // 只加载在线玩家数据
         plugin.getServer().getOnlinePlayers().forEach(player ->
                 getPlayerData(player.getUniqueId())
         );

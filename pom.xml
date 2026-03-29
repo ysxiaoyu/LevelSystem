@@ -6,11 +6,11 @@
 
     <groupId>com.levelsystem</groupId>
     <artifactId>LevelSystem</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <packaging>jar</packaging>
 
     <name>LevelSystem</name>
-    <description>原版生存服等级制度插件 - 支持1.21.8</description>
+    <description>生存等级</description>
 
     <properties>
         <!-- 1.21.8需要Java 21 -->
