@@ -1,0 +1,18 @@
+# 等级系统配置
+# 每级所需经验值 (建议100，平衡且易计算)
+exp-per-level: 100
+
+# 数据存储设置
+data:
+  # 存储类型: YAML, MYSQL (未来支持)
+  storage: YAML
+  # 自动保存间隔 (分钟)
+  auto-save-interval: 5
+
+# 升级提示
+messages:
+  level-up: "&6[&b等级系统&6] &a恭喜！你升级到了 &e%level%级 %tier%段"
+  tier-up: "&6[&b等级系统&6] &b&l大突破！你升到了 &e%tier%段 &b(每段10级)"
+  
+# 调试模式
+debug: false
