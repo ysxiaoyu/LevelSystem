@@ -1,9 +1,9 @@
-package com.yourname;
+package com.levelsystem;
 
-import com.yourname.commands.LevelCommand;
-import com.yourname.data.DataManager;
-import com.yourname.listeners.ExperienceListener;
-import com.yourname.placeholder.LevelExpansion;
+import com.levelsystem.commands.LevelCommand;
+import com.levelsystem.data.DataManager;
+import com.levelsystem.listeners.ExperienceListener;
+import com.levelsystem.placeholder.LevelExpansion;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 

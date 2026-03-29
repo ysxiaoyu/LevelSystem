@@ -1,6 +1,6 @@
-package com.yourname.data;
+package com.levelsystem.data;
 
-import com.yourname.LevelSystem;
+import com.levelsystem.LevelSystem;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;

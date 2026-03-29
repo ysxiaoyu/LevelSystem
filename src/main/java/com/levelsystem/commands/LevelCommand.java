@@ -1,7 +1,7 @@
-package com.yourname.commands;
+package com.levelsystem.commands;
 
-import com.yourname.LevelSystem;
-import com.yourname.data.PlayerData;
+import com.levelsystem.LevelSystem;
+import com.levelsystem.data.PlayerData;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

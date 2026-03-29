@@ -1,4 +1,4 @@
-package com.yourname.data;
+package com.levelsystem.data;
 
 public class PlayerData {
     private int level;      // 级 (0-9循环)

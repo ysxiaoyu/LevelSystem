@@ -1,6 +1,6 @@
 name: LevelSystem
 version: '${project.version}'
-main: com.yourname.LevelSystem
+main: com.levelsystem.LevelSystem
 api-version: '1.21'
 author: GuardTeam-ysxiaoyu
 description: 生存等级

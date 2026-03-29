@@ -1,7 +1,7 @@
-package com.yourname.listeners;
+package com.levelsystem.listeners;
 
-import com.yourname.LevelSystem;
-import com.yourname.data.PlayerData;
+import com.levelsystem.LevelSystem;
+import com.levelsystem.data.PlayerData;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

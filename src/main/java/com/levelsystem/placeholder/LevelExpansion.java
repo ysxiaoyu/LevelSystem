@@ -1,7 +1,7 @@
-package com.yourname.placeholder;
+package com.levelsystem.placeholder;
 
-import com.yourname.LevelSystem;
-import com.yourname.data.PlayerData;
+import com.levelsystem.LevelSystem;
+import com.levelsystem.data.PlayerData;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
